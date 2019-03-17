@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AuthorInfo from './AuthorInfo.js';
 import filters from '../util/filters.js';
-import styles from './DiscordMessage.css';
+import './DiscordMessage.css';
 
 export default class DiscordMessage extends Component {
 	static propTypes = {
@@ -52,32 +52,43 @@ export default class DiscordMessage extends Component {
 	}
 
 	render() {
-		const { children } = this.props;
+		const { props } = this;
 		const profile = this.createProfile();
 
-		const comfyAuthorInfo = (
-			<div>
+		const authorInfo = {
+			comfy: (
+				<div>
+					<AuthorInfo bot={profile.bot} roleColor={profile.roleColor}>
+						{profile.author}
+					</AuthorInfo>
+					<span className="discord-message-timestamp">
+						{this.renderTimestamp()}
+					</span>
+				</div>
+			),
+			compact: (
 				<AuthorInfo bot={profile.bot} roleColor={profile.roleColor}>
 					{profile.author}
 				</AuthorInfo>
-				<span className={styles['discord-message-timestamp']}>
-					{this.renderTimestamp()}
-				</span>
-			</div>
-		);
+			),
+		};
 
-		// TEMP: Should be taken from "plugin options" somehow
-		const compactMode = false;
+		const { children, compactMode, edited } = props;
 
 		return (
-			<div className={styles['discord-message']}>
-				<div className={styles['discord-author-avatar']}>
+			<div className="discord-message">
+				<div className="discord-author-avatar">
 					<img src={profile.avatar} alt={profile.author} />
 				</div>
-				<div className={styles['discord-message-content']}>
-					{!compactMode ? comfyAuthorInfo : null}
-					<div className={styles['discord-message-body']}>
+				<div className="discord-message-content">
+					{!compactMode ? authorInfo.comfy : null}
+					<div className="discord-message-body">
+						{compactMode ? authorInfo.compact : null}
 						{children}
+						{edited
+							? <span className="discord-message-edited">(edited)</span>
+							: null
+						}
 					</div>
 				</div>
 			</div>

@@ -1,11 +1,10 @@
 import React from 'react';
-import styles from './DiscordMessages.css';
+import './DiscordMessages.css';
 
-export default ({ children, compactMode, lightTheme }) => {
-	let classes = styles['discord-messages'];
+	let classes = 'discord-messages';
 
-	if (lightTheme) classes += ` ${styles['discord-light-theme']}`;
-	// if (compactMode) classes += ` ${styles['discord-compact-mode']}`;
+	if (lightTheme) classes += ' discord-light-theme';
+	if (compactMode) classes += ' discord-compact-mode';
 
 	return (
 		<div className={classes}>
