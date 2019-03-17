@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { DiscordMessages, DiscordMessage } from 'react-discord-message';
 
-import ExampleComponent from 'react-discord-message';
-
-export default class App extends Component {
-	render() {
-		return (
-			<div>
-				<ExampleComponent text="Modern React component module" />
-			</div>
-		);
-	}
-}
+export default () => (
+	<DiscordMessages>
+		<DiscordMessage>
+			Hey!
+		</DiscordMessage>
+	</DiscordMessages>
+);
