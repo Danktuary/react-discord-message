@@ -13,16 +13,16 @@ npm install --save react-discord-message
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import MyComponent from 'react-discord-message'
+import MyComponent from 'react-discord-message';
 
 class Example extends Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
+	render () {
+		return (
+			<MyComponent />
+		);
+	}
 }
 ```
 
