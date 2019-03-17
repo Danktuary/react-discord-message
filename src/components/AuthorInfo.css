@@ -31,6 +31,7 @@
 .discord-compact-mode .discord-message .discord-author-info {
 	display: inline-flex;
 	flex-direction: row-reverse;
+	margin-right: 5px;
 }
 
 .discord-compact-mode .discord-message .discord-author-info .discord-bot-tag {
