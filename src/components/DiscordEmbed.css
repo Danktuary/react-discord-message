@@ -1,0 +1,105 @@
+.discord-embed {
+	color: rgba(255, 255, 255, 0.6);
+	display: flex;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	font-size: 13px;
+	line-height: 150%;
+}
+
+.discord-light-theme .discord-embed {
+	color: rgba(79, 83, 91, 0.9);
+}
+
+.discord-embed .discord-left-border {
+	background-color: #4f545c;
+	flex-shrink: 0;
+	width: 4px;
+	border-radius: 3px 0 0 3px;
+}
+
+.discord-light-theme .discord-embed .discord-left-border {
+	background-color: #cacbce;
+}
+
+.discord-embed .discord-embed-container {
+	background-color: rgba(46, 48, 54, 0.3);
+	display: flex;
+	flex-direction: column;
+	max-width: 520px;
+	padding: 8px 10px;
+	border: 1px solid rgba(46, 48, 54, 0.6);
+	border-radius: 0 3px 3px 0;
+}
+
+.discord-light-theme .discord-embed .discord-embed-container {
+	background-color: rgba(249, 249, 249, 0.3);
+	border-color: rgba(205, 205, 205, 0.3);
+}
+
+.discord-embed .discord-embed-content {
+	display: flex;
+}
+
+.discord-embed .discord-embed-thumbnail {
+	width: 80px;
+	height: 80px;
+	margin-left: 1em;
+	border-radius: 3px;
+}
+
+.discord-embed .discord-embed-author {
+	color: #fff;
+	display: flex;
+	font-weight: 500;
+}
+
+.discord-light-theme .discord-embed .discord-embed-author {
+	color: #4f545c;
+}
+
+.discord-embed .discord-embed-author a {
+	color: #fff;
+}
+
+.discord-light-theme .discord-embed .discord-embed-author a {
+	color: #4f545c;
+}
+
+.discord-embed .discord-embed-author .discord-author-image {
+	width: 20px;
+	height: 20px;
+	margin-right: 8px;
+	border-radius: 50%;
+}
+.discord-embed .discord-embed-title {
+	color: #fff;
+	font-weight: 500;
+}
+
+.discord-embed .discord-embed-image {
+	max-width: 100%;
+	margin-top: 8px;
+	border-radius: 3px;
+}
+
+.discord-embed .discord-embed-footer {
+	display: flex;
+	align-items: center;
+	font-size: 0.85em;
+	margin-top: 8px;
+}
+
+.discord-embed .discord-embed-footer .discord-footer-image {
+	flex-shrink: 0;
+	width: 20px;
+	height: 20px;
+	margin-right: 8px;
+	border-radius: 50%;
+}
+
+.discord-embed .discord-embed-footer .discord-footer-separator {
+	color: #4f545c;
+	font-weight: 700;
+	margin: 0 5px;
+}

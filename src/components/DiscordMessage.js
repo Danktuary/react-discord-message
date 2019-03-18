@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AuthorInfo from './AuthorInfo.js';
+import DiscordEmbed from './DiscordEmbed.js';
 import filters from '../util/filters.js';
 import config from '../util/config.js';
 import './DiscordMessage.css';
@@ -11,6 +12,7 @@ export default class DiscordMessage extends Component {
 		avatar: PropTypes.string,
 		bot: PropTypes.bool,
 		edited: PropTypes.bool,
+		embeds: PropTypes.arrayOf(DiscordEmbed),
 		roleColor: PropTypes.string,
 		timestamp: PropTypes.oneOfType([
 			PropTypes.instanceOf(Date),
@@ -66,7 +68,7 @@ export default class DiscordMessage extends Component {
 			),
 		};
 
-		const { children, compactMode, edited } = this.props;
+		const { props } = this;
 
 		return (
 			<div className="discord-message">
@@ -74,15 +76,16 @@ export default class DiscordMessage extends Component {
 					<img src={profile.avatar} alt={profile.author} />
 				</div>
 				<div className="discord-message-content">
-					{!compactMode ? authorInfo.comfy : null}
+					{!props.compactMode ? authorInfo.comfy : null}
 					<div className="discord-message-body">
-						{compactMode ? authorInfo.compact : null}
-						{children}
-						{edited
+						{props.compactMode ? authorInfo.compact : null}
+						{props.children}
+						{props.edited
 							? <span className="discord-message-edited">(edited)</span>
 							: null
 						}
 					</div>
+					{props.embeds}
 				</div>
 			</div>
 		);
