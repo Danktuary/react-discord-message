@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AuthorInfo from './AuthorInfo.js';
 import filters from '../util/filters.js';
+import config from '../util/config.js';
 import './DiscordMessage.css';
 
 export default class DiscordMessage extends Component {
@@ -22,24 +23,17 @@ export default class DiscordMessage extends Component {
 		author: 'User',
 	};
 
-	// TEMP: This should be eventually be somewhat the equivalant of `this.$root.$discordMessage` in Vue
-	discord = {
-		avatars: {
-			default: 'https://i.imgur.com/FPWMhCa.png',
-		},
-		profiles: {},
-	};
-
 	createProfile() {
-		const { discord, props } = this;
-		const resolveAvatar = avatar => discord.avatars[avatar] || avatar || discord.avatars.default;
+		const { props } = this;
+
+		const resolveAvatar = avatar => config.avatars[avatar] || avatar || config.avatars.default;
 		const defaults = {
 			author: props.author,
 			bot: props.bot,
 			roleColor: props.roleColor,
 		};
 
-		const profile = discord.profiles[props.user] || {};
+		const profile = config.profiles[props.user] || {};
 		profile.avatar = resolveAvatar(profile.avatar || props.avatar);
 
 		return Object.assign(defaults, profile);
@@ -52,7 +46,6 @@ export default class DiscordMessage extends Component {
 	}
 
 	render() {
-		const { props } = this;
 		const profile = this.createProfile();
 
 		const authorInfo = {
@@ -73,7 +66,7 @@ export default class DiscordMessage extends Component {
 			),
 		};
 
-		const { children, compactMode, edited } = props;
+		const { children, compactMode, edited } = this.props;
 
 		return (
 			<div className="discord-message">
