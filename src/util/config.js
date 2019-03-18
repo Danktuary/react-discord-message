@@ -1,11 +1,11 @@
+import blue from '../avatars/blue.png';
+import gray from '../avatars/gray.png';
+import green from '../avatars/green.png';
+import orange from '../avatars/orange.png';
+import red from '../avatars/red.png';
+
 const config = {
-	avatars: {
-		blue: require('../avatars/blue.png'),
-		gray: require('../avatars/gray.png'),
-		green: require('../avatars/green.png'),
-		orange: require('../avatars/orange.png'),
-		red: require('../avatars/red.png'),
-	},
+	avatars: { blue, gray, green, orange, red },
 	profiles: {},
 };
 
