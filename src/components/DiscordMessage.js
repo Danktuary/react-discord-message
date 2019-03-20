@@ -41,6 +41,12 @@ export default class DiscordMessage extends Component {
 		return Object.assign(defaults, profile);
 	}
 
+	checkHighlight(child) {
+		if (Array.isArray(child)) return child.some(this.checkHighlight);
+		const { props = {}, type = {} } = child;
+		return type.name === 'Mention' && props.highlight && props.type !== 'channel';
+	}
+
 	renderTimestamp() {
 		const timestamp = this.props.timestamp || new Date();
 		const { formatDate, padZeroes } = filters.dates;
@@ -69,6 +75,9 @@ export default class DiscordMessage extends Component {
 		};
 
 		const { props } = this;
+		let messageClasses = 'discord-message-body';
+
+		if (this.checkHighlight(props.children)) messageClasses += ' discord-highlight-mention';
 
 		return (
 			<div className="discord-message">
@@ -77,7 +86,7 @@ export default class DiscordMessage extends Component {
 				</div>
 				<div className="discord-message-content">
 					{!props.compactMode ? authorInfo.comfy : null}
-					<div className="discord-message-body">
+					<div className={messageClasses}>
 						{props.compactMode ? authorInfo.compact : null}
 						{props.children}
 						{props.edited
