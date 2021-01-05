@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AuthorInfo from './AuthorInfo.js';
-import DiscordEmbed from './DiscordEmbed.js';
-import { config, dateFilters } from '../util.js';
+import { config, dateFilters, findSlot } from '../util.js';
 import './DiscordMessage.css';
 
 export default class DiscordMessage extends Component {
@@ -11,7 +10,6 @@ export default class DiscordMessage extends Component {
 		avatar: PropTypes.string,
 		bot: PropTypes.bool,
 		edited: PropTypes.bool,
-		embeds: PropTypes.arrayOf(DiscordEmbed),
 		roleColor: PropTypes.string,
 		timestamp: PropTypes.oneOfType([
 			PropTypes.instanceOf(Date),
@@ -79,6 +77,19 @@ export default class DiscordMessage extends Component {
 
 		if (props.children && this.checkHighlight(props.children)) messageClasses += ' discord-highlight-mention';
 
+		const slots = {
+			default: props.children,
+			embeds: findSlot(props.children, 'embeds'),
+		};
+
+		// TODO: Throw an error if not a valid React element, or not a DiscordEmbed component
+		if (slots.embeds && React.isValidElement(slots.embeds)) {
+			slots.default = React.Children.map(props.children, element => {
+				if (element.props && element.props.slot === 'embeds') return;
+				return element;
+			});
+		}
+
 		return (
 			<div className="discord-message">
 				<div className="discord-author-avatar">
@@ -88,13 +99,13 @@ export default class DiscordMessage extends Component {
 					{!props.compactMode ? authorInfo.comfy : null}
 					<div className={messageClasses}>
 						{props.compactMode ? authorInfo.compact : null}
-						{props.children}
+						{slots.default}
 						{props.edited
 							? <span className="discord-message-edited">(edited)</span>
 							: null
 						}
 					</div>
-					{props.embeds}
+					{slots.embeds}
 				</div>
 			</div>
 		);
