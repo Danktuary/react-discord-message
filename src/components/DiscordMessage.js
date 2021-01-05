@@ -45,7 +45,7 @@ export default class DiscordMessage extends Component {
 		if (!Array.isArray(children)) return false;
 		return children.some(child => {
 			const { props = {}, type = {} } = child;
-			return type.name === 'Mention' && props.highlight && props.type !== 'channel';
+			return type.name === 'DiscordMention' && props.highlight && props.type !== 'channel';
 		});
 	}
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import hexToRgba from 'hex-to-rgba';
-import './Mention.css';
+import './DiscordMention.css';
 
-export default class Mention extends Component {
+export default class DiscordMention extends Component {
 	static propTypes = {
 		highlight: PropTypes.bool,
 		color: PropTypes.string,

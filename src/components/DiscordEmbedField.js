@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './EmbedField.css';
+import './DiscordEmbedField.css';
 
-export default class EmbedField extends Component {
+export default class DiscordEmbedField extends Component {
 	static propTypes = {
 		inline: PropTypes.bool,
 		title: PropTypes.string.isRequired,

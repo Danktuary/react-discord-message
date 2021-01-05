@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import EmbedFields from './EmbedFields.js';
-import EmbedField from './EmbedField.js';
+import DiscordEmbedFields from './DiscordEmbedFields.js';
+import DiscordEmbedField from './DiscordEmbedField.js';
 import './DiscordEmbed.css';
 
 export default class DiscordEmbed extends Component {
@@ -10,7 +10,7 @@ export default class DiscordEmbed extends Component {
 		authorImage: PropTypes.string,
 		authorUrl: PropTypes.string,
 		color: PropTypes.string,
-		fields: PropTypes.arrayOf(EmbedField),
+		fields: PropTypes.arrayOf(DiscordEmbedField),
 		image: PropTypes.string,
 		footerImage: PropTypes.string,
 		thumbnail: PropTypes.string,
@@ -73,7 +73,7 @@ export default class DiscordEmbed extends Component {
 							<div className="discord-embed-description">
 								{props.children}
 							</div>
-							<EmbedFields>{slots.fields}</EmbedFields>
+							<DiscordEmbedFields>{slots.fields}</DiscordEmbedFields>
 							{props.image ? <img src={props.image} className="discord-embed-image" alt="" /> : null}
 						</div>
 						{props.thumbnail ? <img src={props.thumbnail} alt="" className="discord-embed-thumbnail" /> : null}
