@@ -1,3 +1,5 @@
+import React from 'react';
+
 const avatars = {
 	blue: 'https://cdn.discordapp.com/attachments/654503812593090602/665721745466195978/blue.png',
 	gray: 'https://cdn.discordapp.com/attachments/654503812593090602/665721746569166849/gray.png',
@@ -19,4 +21,8 @@ export const dateFilters = {
 		const [month, day, year] = value.split('/');
 		return `${month.padStart(2, 0)}/${day.padStart(2, 0)}/${year}`;
 	},
+};
+
+export const findSlot = (elements, name) => {
+	return React.Children.toArray(elements).find(({ props = {} }) => props.slot && props.slot === name);
 };
