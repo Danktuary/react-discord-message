@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AuthorInfo from './AuthorInfo.js';
 import DiscordEmbed from './DiscordEmbed.js';
-import filters from '../util/filters.js';
-import config from '../util/config.js';
+import { config, dateFilters } from '../util.js';
 import './DiscordMessage.css';
 
 export default class DiscordMessage extends Component {
@@ -51,8 +50,7 @@ export default class DiscordMessage extends Component {
 
 	renderTimestamp() {
 		const timestamp = this.props.timestamp || new Date();
-		const { formatDate, padZeroes } = filters.dates;
-		return padZeroes(formatDate(timestamp));
+		return dateFilters.padZeroes(dateFilters.formatDate(timestamp));
 	}
 
 	render() {
