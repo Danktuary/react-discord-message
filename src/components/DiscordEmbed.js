@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DiscordEmbedFields from './DiscordEmbedFields.js';
-import DiscordEmbedField from './DiscordEmbedField.js';
+import { findSlot, parseTimestamp } from '../util.js';
 import './DiscordEmbed.css';
 
 export default class DiscordEmbed extends Component {
@@ -10,7 +9,6 @@ export default class DiscordEmbed extends Component {
 		authorImage: PropTypes.string,
 		authorUrl: PropTypes.string,
 		color: PropTypes.string,
-		fields: PropTypes.arrayOf(DiscordEmbedField),
 		image: PropTypes.string,
 		footerImage: PropTypes.string,
 		thumbnail: PropTypes.string,
@@ -28,30 +26,52 @@ export default class DiscordEmbed extends Component {
 
 	render() {
 		const { props } = this;
-		const { authorImage, authorName, authorUrl, footer } = props;
+		const { authorImage, authorName, authorUrl } = props;
+
 		const slots = {
+			default: props.children,
+			fields: findSlot(props.children, 'fields'),
+			footer: findSlot(props.children, 'footer'),
+		};
+
+		if (slots.fields) {
+			if (!React.isValidElement(slots.fields) || slots.fields.type.name !== 'DiscordEmbedFields') {
+				throw new Error('Element with slot name "fields" must be a DiscordEmbedFields component.');
+			}
+
+			slots.default = React.Children.map(slots.default, element => {
+				if (element.props && element.props.slot === 'fields') return;
+				return element;
+			});
+		}
+
+		if (slots.footer) {
+			slots.default = React.Children.map(slots.default, element => {
+				if (element.props && element.props.slot === 'footer') return;
+				return element;
+			});
+		}
+
+		const content = {
 			author: (
 				<div className="discord-embed-author">
 					{authorImage ? <img src={authorImage} alt="" className="discord-author-image" /> : null}
 					{authorUrl ? <a href={authorUrl} target="_blank">{authorName}</a> : <span>{authorName}</span>}
 				</div>
 			),
-			fields: props.fields.map((field, index) => {
-				return React.createElement(() => field, { key: field.key || index });
-			}),
 			footer: (
 				<div className="discord-embed-footer">
-					{footer && props.footerImage
+					{slots.footer && props.footerImage
 						? <img src={props.footerImage} alt="" className="discord-footer-image" />
 						: null
 					}
 					<span>
-						{footer}
-						{footer && props.timestamp
+						{slots.footer}
+						{slots.footer && props.timestamp
 							? <span className="discord-footer-separator">&bull;</span>
 							: null
 						}
-						{props.timestamp ? <span>{props.timestamp}</span> : null}
+						{props.timestamp ? <span>{parseTimestamp(props.timestamp)}</span> : null}
 					</span>
 				</div>
 			),
@@ -68,17 +88,17 @@ export default class DiscordEmbed extends Component {
 				<div className="discord-embed-container">
 					<div className="discord-embed-content">
 						<div>
-							{authorName ? slots.author : null}
-							{props.title ? slots.title : null}
+							{authorName ? content.author : null}
+							{props.title ? content.title : null}
 							<div className="discord-embed-description">
-								{props.children}
+								{slots.default}
 							</div>
-							<DiscordEmbedFields>{slots.fields}</DiscordEmbedFields>
+							{slots.fields}
 							{props.image ? <img src={props.image} className="discord-embed-image" alt="" /> : null}
 						</div>
 						{props.thumbnail ? <img src={props.thumbnail} alt="" className="discord-embed-thumbnail" /> : null}
 					</div>
-					{props.footer || props.timestamp ? slots.footer : null}
+					{slots.footer || props.timestamp ? content.footer : null}
 				</div>
 			</div>
 		);
