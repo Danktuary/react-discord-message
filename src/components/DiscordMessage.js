@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import AuthorInfo from './AuthorInfo.js';
 import { config, elementsWithoutSlot, findSlot, parseTimestamp } from '../util.js';
 import './DiscordMessage.css';
+
+const now = new Date();
 
 export default class DiscordMessage extends Component {
 	static propTypes = {
@@ -20,6 +22,7 @@ export default class DiscordMessage extends Component {
 
 	static defaultProps = {
 		author: 'User',
+		timestamp: now,
 	};
 
 	createProfile() {
@@ -62,13 +65,18 @@ export default class DiscordMessage extends Component {
 				</div>
 			),
 			compact: (
-				<AuthorInfo bot={profile.bot} roleColor={profile.roleColor}>
-					{profile.author}
-				</AuthorInfo>
+				<Fragment>
+					<span className="discord-message-timestamp">
+						{parseTimestamp(props.timestamp)}
+					</span>
+					<AuthorInfo bot={profile.bot} roleColor={profile.roleColor}>
+						{profile.author}
+					</AuthorInfo>
+				</Fragment>
 			),
 		};
 
-		let messageClasses = 'discord-message-body';
+		let messageClasses = 'discord-message';
 
 		if (props.children && this.checkHighlight(props.children)) messageClasses += ' discord-highlight-mention';
 
@@ -86,13 +94,13 @@ export default class DiscordMessage extends Component {
 		}
 
 		return (
-			<div className="discord-message">
+			<div className={messageClasses}>
 				<div className="discord-author-avatar">
 					<img src={profile.avatar} alt={profile.author} />
 				</div>
 				<div className="discord-message-content">
 					{!props.compactMode ? authorInfo.comfy : null}
-					<div className={messageClasses}>
+					<div className="discord-message-body">
 						{props.compactMode ? authorInfo.compact : null}
 						{slots.default}
 						{props.edited

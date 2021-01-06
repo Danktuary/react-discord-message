@@ -11,6 +11,6 @@ export default ({ bot, children, roleColor }) => {
 				? <span className="discord-bot-tag">Bot</span>
 				: null
 			}
-		</span >
+		</span>
 	);
 };

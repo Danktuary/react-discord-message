@@ -7,7 +7,11 @@ export default class DiscordMention extends Component {
 	static propTypes = {
 		highlight: PropTypes.bool,
 		color: PropTypes.string,
-		type: PropTypes.string,
+		type(props) {
+			if (!['user', 'channel', 'role'].includes(props.type)) {
+				return new Error('Type prop inside DiscordMention component must be either "user", "channel", or "role".');
+			}
+		},
 	};
 
 	static defaultProps = {
@@ -20,40 +24,43 @@ export default class DiscordMention extends Component {
 	}
 
 	componentDidMount() {
-		const { props, $el } = this;
-		if (props.color && props.type === 'role') {
-			$el.current.addEventListener('mouseover', () => this.setHoverColor($el, props.color));
-			$el.current.addEventListener('mouseout', () => this.resetHoverColor($el, props.color));
+		if (this.props.color && this.props.type === 'role') {
+			this.$el.current.addEventListener('mouseover', this.setHoverColor.bind(this));
+			this.$el.current.addEventListener('mouseout', this.resetHoverColor.bind(this));
 		}
 	}
 
 	componentWillUnmount() {
-		const { props, $el } = this;
-		if (props.color && props.type === 'role') {
-			$el.current.removeEventListener('mouseover', () => this.setHoverColor($el, props.color));
-			$el.current.removeEventListener('mouseout', () => this.resetHoverColor($el, props.color));
+		if (this.props.color && this.props.type === 'role') {
+			this.$el.current.removeEventListener('mouseover', this.setHoverColor.bind(this));
+			this.$el.current.removeEventListener('mouseout', this.resetHoverColor.bind(this));
 		}
 	}
 
-	setHoverColor(element, color) {
-		element.current.style.backgroundColor = hexToRgba(this.props.color, 0.3);
+	setHoverColor() {
+		this.$el.current.style.backgroundColor = hexToRgba(this.props.color, 0.3);
 	}
 
-	resetHoverColor(element, color) {
-		element.current.style.backgroundColor = hexToRgba(this.props.color, 0.1);
+	resetHoverColor() {
+		this.$el.current.style.backgroundColor = hexToRgba(this.props.color, 0.1);
 	}
 
 	render() {
-		const { props } = this;
+		const { children, color, type } = this.props;
 
-		const colorStyle = (!props.color || props.type !== 'role')
+		const colorStyle = !color || type !== 'role'
 			? {}
 			: {
-				color: props.color,
-				backgroundColor: hexToRgba(props.color, 0.1),
+				color: color,
+				backgroundColor: hexToRgba(color, 0.1),
 			};
 
-		const mentionCharacter = props.type === 'channel' ? '#' : '@';
+		const slots = { default: children };
+		const mentionCharacter = type === 'channel' ? '#' : '@';
+
+		if (!slots.default) {
+			slots.default = type === 'channel' ? type : type.charAt(0).toUpperCase() + type.slice(1);
+		}
 
 		return (
 			<span
@@ -61,7 +68,7 @@ export default class DiscordMention extends Component {
 				className="discord-mention"
 				ref={this.$el}
 			>
-				{mentionCharacter}{props.children}
+				{mentionCharacter}{slots.default}
 			</span>
 		);
 	}
