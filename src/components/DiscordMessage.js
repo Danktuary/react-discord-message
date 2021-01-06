@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AuthorInfo from './AuthorInfo.js';
-import { config, dateFilters, findSlot } from '../util.js';
+import { config, findSlot, parseTimestamp } from '../util.js';
 import './DiscordMessage.css';
 
 export default class DiscordMessage extends Component {
@@ -46,12 +46,8 @@ export default class DiscordMessage extends Component {
 		});
 	}
 
-	renderTimestamp() {
-		const timestamp = this.props.timestamp || new Date();
-		return dateFilters.padZeroes(dateFilters.formatDate(timestamp));
-	}
-
 	render() {
+		const { props } = this;
 		const profile = this.createProfile();
 
 		const authorInfo = {
@@ -61,7 +57,7 @@ export default class DiscordMessage extends Component {
 						{profile.author}
 					</AuthorInfo>
 					<span className="discord-message-timestamp">
-						{this.renderTimestamp()}
+						{parseTimestamp(props.timestamp)}
 					</span>
 				</div>
 			),
@@ -72,7 +68,6 @@ export default class DiscordMessage extends Component {
 			),
 		};
 
-		const { props } = this;
 		let messageClasses = 'discord-message-body';
 
 		if (props.children && this.checkHighlight(props.children)) messageClasses += ' discord-highlight-mention';

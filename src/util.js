@@ -12,7 +12,7 @@ avatars.default = avatars.blue;
 
 export const config = { avatars, profiles: {} };
 
-export const dateFilters = {
+const dateFilters = {
 	formatDate(value) {
 		if (!(value instanceof Date)) return value;
 		return `${value.getMonth() + 1}/${value.getDate()}/${value.getFullYear()}`;
@@ -21,6 +21,10 @@ export const dateFilters = {
 		const [month, day, year] = value.split('/');
 		return `${month.padStart(2, 0)}/${day.padStart(2, 0)}/${year}`;
 	},
+};
+
+export const parseTimestamp = (timestamp = new Date()) => {
+	return dateFilters.padZeroes(dateFilters.formatDate(timestamp));
 };
 
 export const findSlot = (elements, name) => {
