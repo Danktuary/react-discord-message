@@ -82,9 +82,12 @@ export default class DiscordMessage extends Component {
 			embeds: findSlot(props.children, 'embeds'),
 		};
 
-		// TODO: Throw an error if not a valid React element, or not a DiscordEmbed component
-		if (slots.embeds && React.isValidElement(slots.embeds)) {
-			slots.default = React.Children.map(props.children, element => {
+		if (slots.embeds) {
+			if (!React.isValidElement(slots.embeds) || slots.embeds.type.name !== 'DiscordEmbed') {
+				throw new Error('Element with slot name "embeds" must be a DiscordEmbed component.');
+			}
+
+			slots.default = React.Children.map(slots.default, element => {
 				if (element.props && element.props.slot === 'embeds') return;
 				return element;
 			});
