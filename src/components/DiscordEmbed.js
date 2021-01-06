@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { findSlot, parseTimestamp } from '../util.js';
+import { elementsWithoutSlot, findSlot, parseTimestamp } from '../util.js';
 import './DiscordEmbed.css';
 
 export default class DiscordEmbed extends Component {
@@ -39,18 +39,10 @@ export default class DiscordEmbed extends Component {
 				throw new Error('Element with slot name "fields" must be a DiscordEmbedFields component.');
 			}
 
-			slots.default = React.Children.map(slots.default, element => {
-				if (element.props && element.props.slot === 'fields') return;
-				return element;
-			});
+			slots.default = elementsWithoutSlot(slots.default, 'fields');
 		}
 
-		if (slots.footer) {
-			slots.default = React.Children.map(slots.default, element => {
-				if (element.props && element.props.slot === 'footer') return;
-				return element;
-			});
-		}
+		if (slots.footer) slots.default = elementsWithoutSlot(slots.default, 'footer');
 
 		const content = {
 			author: (

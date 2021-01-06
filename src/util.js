@@ -30,3 +30,10 @@ export const parseTimestamp = (timestamp = new Date()) => {
 export const findSlot = (elements, name) => {
 	return React.Children.toArray(elements).find(({ props = {} }) => props.slot && props.slot === name);
 };
+
+export const elementsWithoutSlot = (elements, name) => {
+	return React.Children.map(elements, element => {
+		if (element.props && element.props.slot === name) return;
+		return element;
+	});
+};

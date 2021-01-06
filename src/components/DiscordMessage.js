@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AuthorInfo from './AuthorInfo.js';
-import { config, findSlot, parseTimestamp } from '../util.js';
+import { config, elementsWithoutSlot, findSlot, parseTimestamp } from '../util.js';
 import './DiscordMessage.css';
 
 export default class DiscordMessage extends Component {
@@ -82,10 +82,7 @@ export default class DiscordMessage extends Component {
 				throw new Error('Element with slot name "embeds" must be a DiscordEmbed component.');
 			}
 
-			slots.default = React.Children.map(slots.default, element => {
-				if (element.props && element.props.slot === 'embeds') return;
-				return element;
-			});
+			slots.default = elementsWithoutSlot(slots.default, 'embeds');
 		}
 
 		return (
