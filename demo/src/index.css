@@ -1,5 +1,25 @@
 body {
+	color: #eee;
+	background-color: #2a2a2a;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+	color: #0099ff;
+}
+
+a:hover {
+	color: #037cce;
+}
+
+.logo {
+	display: inline-block;
+	font-weight: bold;
+	font-size: 2em;
 	margin: 0;
-	padding: 0;
-	font-family: sans-serif;
+}
+
+.title {
+	border-bottom: 1px solid #4a4a4a;
+	padding-bottom: 0.25em;
 }
