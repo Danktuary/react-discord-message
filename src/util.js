@@ -1,4 +1,4 @@
-import React from 'react';
+import { Children } from 'react';
 
 const avatars = {
 	blue: 'https://cdn.discordapp.com/attachments/654503812593090602/665721745466195978/blue.png',
@@ -28,11 +28,11 @@ export const parseTimestamp = (timestamp = new Date()) => {
 };
 
 export const findSlot = (elements, name) => {
-	return React.Children.toArray(elements).find(({ props = {} }) => props.slot && props.slot === name);
+	return Children.toArray(elements).find(({ props = {} }) => props.slot && props.slot === name);
 };
 
 export const elementsWithoutSlot = (elements, name) => {
-	return React.Children.map(elements, element => {
+	return Children.map(elements, element => {
 		if (element.props && element.props.slot === name) return;
 		return element;
 	});

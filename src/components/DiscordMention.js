@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import hexToRgba from 'hex-to-rgba';
 import './DiscordMention.css';
@@ -20,7 +20,7 @@ export default class DiscordMention extends Component {
 
 	constructor(props) {
 		super(props);
-		this.$el = React.createRef();
+		this.$el = createRef();
 	}
 
 	componentDidMount() {

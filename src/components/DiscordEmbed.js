@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, isValidElement } from 'react';
 import PropTypes from 'prop-types';
 import { elementsWithoutSlot, findSlot, parseTimestamp } from '../util.js';
 import './DiscordEmbed.css';
@@ -35,7 +35,7 @@ export default class DiscordEmbed extends Component {
 		};
 
 		if (slots.fields) {
-			if (!React.isValidElement(slots.fields) || slots.fields.type.name !== 'DiscordEmbedFields') {
+			if (!isValidElement(slots.fields) || slots.fields.type.name !== 'DiscordEmbedFields') {
 				throw new Error('Element with slot name "fields" must be a DiscordEmbedFields component.');
 			}
 

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, isValidElement } from 'react';
 import PropTypes from 'prop-types';
 import AuthorInfo from './AuthorInfo.js';
 import { config, elementsWithoutSlot, findSlot, parseTimestamp } from '../util.js';
@@ -86,7 +86,7 @@ export default class DiscordMessage extends Component {
 		};
 
 		if (slots.embeds) {
-			if (!React.isValidElement(slots.embeds) || slots.embeds.type.name !== 'DiscordEmbed') {
+			if (!isValidElement(slots.embeds) || slots.embeds.type.name !== 'DiscordEmbed') {
 				throw new Error('Element with slot name "embeds" must be a DiscordEmbed component.');
 			}
 
