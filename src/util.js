@@ -12,19 +12,10 @@ avatars.default = avatars.blue;
 
 export const config = { avatars, profiles: {} };
 
-const dateFilters = {
-	formatDate(value) {
-		if (!(value instanceof Date)) return value;
-		return `${value.getMonth() + 1}/${value.getDate()}/${value.getFullYear()}`;
-	},
-	padZeroes(value) {
-		const [month, day, year] = value.split('/');
-		return `${month.padStart(2, 0)}/${day.padStart(2, 0)}/${year}`;
-	},
-};
-
 export const parseTimestamp = (timestamp = new Date()) => {
-	return dateFilters.padZeroes(dateFilters.formatDate(timestamp));
+	if (!(timestamp instanceof Date)) timestamp = new Date(timestamp);
+	const [month, day, year] = [timestamp.getMonth() + 1, timestamp.getDate(), timestamp.getFullYear()];
+	return `${month.toString().padStart(2, 0)}/${day.toString().padStart(2, 0)}/${year}`;
 };
 
 export const findSlot = (elements, name) => {
