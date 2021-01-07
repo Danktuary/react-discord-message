@@ -33,8 +33,8 @@ export default class DiscordEmbed extends Component {
 		};
 
 		if (slots.fields) {
-			if (!isValidElement(slots.fields) || slots.fields.type.name !== 'DiscordEmbedFields') {
-				throw new Error('Element with slot name "fields" must be a DiscordEmbedFields component.');
+			if (!isValidElement(slots.fields)) {
+				throw new Error('Element with slot name "fields" should be a valid DiscordEmbedFields component.');
 			}
 
 			slots.default = elementsWithoutSlot(slots.default, 'fields');

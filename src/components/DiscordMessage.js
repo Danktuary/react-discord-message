@@ -48,9 +48,7 @@ export default class DiscordMessage extends Component {
 
 	checkHighlight(children) {
 		if (!Array.isArray(children)) return false;
-		return children.some(({ props = {}, type = {} }) => {
-			return type.name === 'DiscordMention' && props.highlight && props.type !== 'channel';
-		});
+		return children.some(({ props = {} }) => props.highlight && props.type !== 'channel');
 	}
 
 	render() {
@@ -90,8 +88,8 @@ export default class DiscordMessage extends Component {
 		};
 
 		if (slots.embeds) {
-			if (!isValidElement(slots.embeds) || slots.embeds.type.name !== 'DiscordEmbed') {
-				throw new Error('Element with slot name "embeds" must be a DiscordEmbed component.');
+			if (!isValidElement(slots.embeds)) {
+				throw new Error('Element with slot name "embeds" should be a valid DiscordEmbed component.');
 			}
 
 			slots.default = elementsWithoutSlot(slots.default, 'embeds');
