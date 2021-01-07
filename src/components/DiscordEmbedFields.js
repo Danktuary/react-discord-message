@@ -1,4 +1,4 @@
-import React from 'react';
-import './DiscordEmbedFields.css';
+import React from 'react'
+import './DiscordEmbedFields.css'
 
-export default ({ children }) => <div className="discord-embed-fields">{children}</div>;
+export default ({ children }) => <div className="discord-embed-fields">{children}</div>

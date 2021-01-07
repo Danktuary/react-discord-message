@@ -1,5 +1,5 @@
-import React from 'react';
-import './AuthorInfo.css';
+import React from 'react'
+import './AuthorInfo.css'
 
 export default ({ bot, children, roleColor }) => {
 	return (
@@ -9,5 +9,5 @@ export default ({ bot, children, roleColor }) => {
 			</span>
 			{bot ? <span className="discord-bot-tag">Bot</span> : null}
 		</span>
-	);
-};
+	)
+}

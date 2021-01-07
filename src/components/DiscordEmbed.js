@@ -1,7 +1,7 @@
-import React, { Component, isValidElement } from 'react';
-import PropTypes from 'prop-types';
-import { elementsWithoutSlot, findSlot, parseTimestamp } from '../util.js';
-import './DiscordEmbed.css';
+import React, { Component, isValidElement } from 'react'
+import PropTypes from 'prop-types'
+import { elementsWithoutSlot, findSlot, parseTimestamp } from '../util.js'
+import './DiscordEmbed.css'
 
 export default class DiscordEmbed extends Component {
 	static propTypes = {
@@ -25,22 +25,22 @@ export default class DiscordEmbed extends Component {
 	};
 
 	render() {
-		const { props } = this;
+		const { props } = this
 		const slots = {
-			default: props.children,
+			'default': props.children,
 			fields: findSlot(props.children, 'fields'),
 			footer: findSlot(props.children, 'footer'),
-		};
+		}
 
 		if (slots.fields) {
 			if (!isValidElement(slots.fields)) {
-				throw new Error('Element with slot name "fields" should be a valid DiscordEmbedFields component.');
+				throw new Error('Element with slot name "fields" should be a valid DiscordEmbedFields component.')
 			}
 
-			slots.default = elementsWithoutSlot(slots.default, 'fields');
+			slots.default = elementsWithoutSlot(slots.default, 'fields')
 		}
 
-		if (slots.footer) slots.default = elementsWithoutSlot(slots.default, 'footer');
+		if (slots.footer) slots.default = elementsWithoutSlot(slots.default, 'footer')
 
 		const content = {
 			author: (
@@ -70,7 +70,7 @@ export default class DiscordEmbed extends Component {
 					{props.url ? <a href={props.url} target="_blank">{props.title}</a> : <span>{props.title}</span>}
 				</div>
 			),
-		};
+		}
 
 		return (
 			<div className="discord-embed">
@@ -91,6 +91,6 @@ export default class DiscordEmbed extends Component {
 					{slots.footer || props.timestamp ? content.footer : null}
 				</div>
 			</div>
-		);
+		)
 	}
 }

@@ -4238,15 +4238,15 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-aqua@^4.4.1:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-aqua/-/eslint-config-aqua-4.4.1.tgz#eaf15713b7a9ca31d0c4ac9bdbddc1531a2055a7"
-  integrity sha512-NU77zL0p0iL/hlaAyz4g6ogwwVUDJpaRWUJjca7znNsDpAP+W+/e7QDL6gna2TPEeHuhDq1WEVU614YTljLcjw==
-
 eslint-config-react-app@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/eslint-config-react-app/-/eslint-config-react-app-2.1.0.tgz#23c909f71cbaff76b945b831d2d814b8bde169eb"
   integrity sha512-8QZrKWuHVC57Fmu+SsKAVxnI9LycZl7NFQ4H9L+oeISuCXhYdXqsOOIVSjQFW6JF5MXZLFE+21Syhd7mF1IRZQ==
+
+eslint-config-sora@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-sora/-/eslint-config-sora-3.1.0.tgz#572809394f4dbd9d94760e8044aed075e84784a5"
+  integrity sha512-+T4XN/QPOeqY8smWY4lfAcbQ2PJqsnnwNgQe2Cp8PvAnEwbRGWWYU9jmhV3AoBk3zmRxy/RLuM2JQBSepvsfIw==
 
 eslint-config-standard-jsx@^5.0.0:
   version "5.0.0"
