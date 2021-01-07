@@ -4,19 +4,18 @@ import './DiscordEmbedField.css';
 
 export default class DiscordEmbedField extends Component {
 	static propTypes = {
-		inline: PropTypes.bool,
 		fieldTitle: PropTypes.string.isRequired,
+		inline: PropTypes.bool,
 	};
 
 	render() {
-		const { children, inline, fieldTitle } = this.props;
 		let classes = 'discord-embed-field';
-		if (inline) classes += ' discord-inline-field';
+		if (this.props.inline) classes += ' discord-inline-field';
 
 		return (
 			<div className={classes}>
-				<div className="discord-field-title">{fieldTitle}</div>
-				{children}
+				<div className="discord-field-title">{this.props.fieldTitle}</div>
+				{this.props.children}
 			</div>
 		);
 	}

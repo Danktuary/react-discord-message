@@ -7,10 +7,7 @@ export default ({ bot, children, roleColor }) => {
 			<span style={{ color: roleColor }} className="discord-author-username">
 				{children}
 			</span>
-			{bot
-				? <span className="discord-bot-tag">Bot</span>
-				: null
-			}
+			{bot ? <span className="discord-bot-tag">Bot</span> : null}
 		</span>
 	);
 };

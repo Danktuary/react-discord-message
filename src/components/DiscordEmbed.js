@@ -5,12 +5,12 @@ import './DiscordEmbed.css';
 
 export default class DiscordEmbed extends Component {
 	static propTypes = {
-		authorName: PropTypes.string,
 		authorImage: PropTypes.string,
+		authorName: PropTypes.string,
 		authorUrl: PropTypes.string,
 		color: PropTypes.string,
-		image: PropTypes.string,
 		footerImage: PropTypes.string,
+		image: PropTypes.string,
 		thumbnail: PropTypes.string,
 		timestamp: PropTypes.oneOfType([
 			PropTypes.instanceOf(Date),
@@ -26,8 +26,6 @@ export default class DiscordEmbed extends Component {
 
 	render() {
 		const { props } = this;
-		const { authorImage, authorName, authorUrl } = props;
-
 		const slots = {
 			default: props.children,
 			fields: findSlot(props.children, 'fields'),
@@ -47,8 +45,8 @@ export default class DiscordEmbed extends Component {
 		const content = {
 			author: (
 				<div className="discord-embed-author">
-					{authorImage ? <img src={authorImage} alt="" className="discord-author-image" /> : null}
-					{authorUrl ? <a href={authorUrl} target="_blank">{authorName}</a> : <span>{authorName}</span>}
+					{props.authorImage ? <img src={props.authorImage} alt="" className="discord-author-image" /> : null}
+					{props.authorUrl ? <a href={props.authorUrl} target="_blank">{props.authorName}</a> : <span>{props.authorName}</span>}
 				</div>
 			),
 			footer: (
@@ -80,7 +78,7 @@ export default class DiscordEmbed extends Component {
 				<div className="discord-embed-container">
 					<div className="discord-embed-content">
 						<div>
-							{authorName ? content.author : null}
+							{props.authorName ? content.author : null}
 							{props.title ? content.title : null}
 							<div className="discord-embed-description">
 								{slots.default}

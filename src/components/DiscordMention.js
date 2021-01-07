@@ -5,8 +5,8 @@ import './DiscordMention.css';
 
 export default class DiscordMention extends Component {
 	static propTypes = {
-		highlight: PropTypes.bool,
 		color: PropTypes.string,
+		highlight: PropTypes.bool,
 		type(props) {
 			if (!['user', 'channel', 'role'].includes(props.type)) {
 				return new Error('Type prop inside DiscordMention component must be either "user", "channel", or "role".');
@@ -63,11 +63,7 @@ export default class DiscordMention extends Component {
 		}
 
 		return (
-			<span
-				style={colorStyle}
-				className="discord-mention"
-				ref={this.$el}
-			>
+			<span style={colorStyle} className="discord-mention" ref={this.$el}>
 				{mentionCharacter}{slots.default}
 			</span>
 		);
