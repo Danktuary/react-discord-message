@@ -1,9 +1,8 @@
 import React from 'react';
 import './DiscordMessages.css';
 
-export default ({ children, compactMode = false, lightTheme = false }) => {
+export default function DiscordMessages({ children, compactMode = false, lightTheme = false }) {
 	let classes = 'discord-messages';
-
 	if (lightTheme) classes += ' discord-light-theme';
 	if (compactMode) classes += ' discord-compact-mode';
 
@@ -16,4 +15,4 @@ export default ({ children, compactMode = false, lightTheme = false }) => {
 			{messages}
 		</div>
 	);
-};
+}
