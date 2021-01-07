@@ -1,23 +1,27 @@
 import React, { Component, Fragment, isValidElement } from 'react';
 import PropTypes from 'prop-types';
 import AuthorInfo from './AuthorInfo.js';
-import { config, elementsWithoutSlot, findSlot, parseTimestamp } from '../util.js';
+import DiscordOptionsContext from '../context/DiscordOptionsContext.js';
+import * as DiscordDefaultOptions from '../context/DiscordDefaultOptions.js';
+import { elementsWithoutSlot, findSlot, parseTimestamp } from '../util.js';
 import './DiscordMessage.css';
 
 const now = new Date();
 
 export default class DiscordMessage extends Component {
+	static contextType = DiscordOptionsContext
+
 	static propTypes = {
 		author: PropTypes.string,
 		avatar: PropTypes.string,
 		bot: PropTypes.bool,
 		edited: PropTypes.bool,
+		profile: PropTypes.string,
 		roleColor: PropTypes.string,
 		timestamp: PropTypes.oneOfType([
 			PropTypes.instanceOf(Date),
 			PropTypes.string,
 		]),
-		user: PropTypes.string,
 	};
 
 	static defaultProps = {
@@ -26,16 +30,17 @@ export default class DiscordMessage extends Component {
 	};
 
 	createProfile() {
-		const { props } = this;
+		const { context, props } = this;
+		const options = context || DiscordDefaultOptions;
 
-		const resolveAvatar = avatar => config.avatars[avatar] || avatar || config.avatars.default;
+		const resolveAvatar = avatar => options.avatars[avatar] || avatar || options.avatars.default;
 		const defaults = {
 			author: props.author,
 			bot: props.bot,
 			roleColor: props.roleColor,
 		};
 
-		const profile = config.profiles[props.user] || {};
+		const profile = options.profiles[props.profile] || {};
 		profile.avatar = resolveAvatar(profile.avatar || props.avatar);
 
 		return Object.assign(defaults, profile);
