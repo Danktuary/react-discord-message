@@ -9,7 +9,7 @@ export default class DiscordMention extends Component {
 		highlight: PropTypes.bool,
 		type(props) {
 			if (!['user', 'channel', 'role'].includes(props.type)) {
-				return new Error('Type prop inside DiscordMention component must be either "user", "channel", or "role".');
+				return new RangeError('Type prop inside DiscordMention component must be either "user", "channel", or "role".');
 			}
 		},
 	};
