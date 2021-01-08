@@ -1,5 +1,8 @@
 module.exports = {
-	extends: 'sora',
+	extends: [
+		'plugin:react/recommended',
+		'sora',
+	],
 	env: { browser: true },
 	parser: 'babel-eslint',
 	parserOptions: {
@@ -9,5 +12,10 @@ module.exports = {
 	},
 	rules: {
 		semi: ['warn', 'never'],
+	},
+	settings: {
+		react: {
+			version: '^17.0.0',
+		},
 	},
 }
