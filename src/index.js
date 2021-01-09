@@ -5,4 +5,4 @@ export { default as DiscordEmbedFields } from './components/DiscordEmbedFields.j
 export { default as DiscordEmbedField } from './components/DiscordEmbedField.js'
 export { default as DiscordMention } from './components/DiscordMention.js'
 export { default as DiscordOptionsContext } from './context/DiscordOptionsContext.js'
-export * as DiscordDefaultOptions from './context/DiscordDefaultOptions.js'
+export { default as DiscordDefaultOptions } from './context/DiscordDefaultOptions.js'

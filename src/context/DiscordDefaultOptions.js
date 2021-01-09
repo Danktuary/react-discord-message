@@ -8,8 +8,10 @@ const defaultAvatars = {
 
 defaultAvatars.default = defaultAvatars.blue
 
-export const avatars = defaultAvatars
-export const disableFont = true
-export const defaultMode = 'comfy'
-export const defaultTheme = 'dark'
-export const profiles = {}
+export default {
+	avatars: defaultAvatars,
+	disableFont: true,
+	defaultMode: 'comfy',
+	defaultTheme: 'dark',
+	profiles: {},
+}
