@@ -45,16 +45,16 @@ export default function App() {
 							Hi, I'm new here too!
 						</DiscordMessage>
 						<DiscordMessage profile="sanc">
-							Hey, <DiscordMention>User</DiscordMention> and <DiscordMention>Dawn</DiscordMention>. Welcome to our server!<br />Be sure to read through the <DiscordMention type="channel">rules</DiscordMention>. You can ping <DiscordMention type="role" color="#70f0b4">Support</DiscordMention> if you need help.
+							Hey, <DiscordMention /> and <DiscordMention>Dawn</DiscordMention>. Welcome to our server!<br />Be sure to read through the <DiscordMention type="channel">rules</DiscordMention>. You can ping <DiscordMention type="role" color="#70f0b4">Support</DiscordMention> if you need help.
 						</DiscordMessage>
 						<DiscordMessage profile="twelve">
 							Hello everyone! How's it going?
 						</DiscordMessage>
 						<DiscordMessage author="User">
-							Thank you <DiscordMention highlight={true}>Sanctuary</DiscordMention>!
+							Thank you <DiscordMention profile="sanc" highlight={true} />!
 						</DiscordMessage>
 						<DiscordMessage author="Yotsuba" avatar="https://i.imgur.com/amw0MGJ.png">
-							I'm doing well, <DiscordMention>Twelve</DiscordMention>. What about yourself?
+							I'm doing well, <DiscordMention profile="twelve" />. What about yourself?
 						</DiscordMessage>
 						<DiscordMessage profile="twelve">
 							!8ball How am I doing today?
@@ -78,10 +78,10 @@ export default function App() {
 					<h3 className="title">Mentions</h3>
 					<DiscordMessages>
 						<DiscordMessage profile="sanc">
-							Hey, <DiscordMention>User</DiscordMention> and <DiscordMention>Dawn</DiscordMention>. Welcome to our server! Be sure to read through the <DiscordMention type="channel">rules</DiscordMention>. You can ping <DiscordMention type="role" color="#70f0b4">Support</DiscordMention> if you need help.
+							Hey, <DiscordMention /> and <DiscordMention>Dawn</DiscordMention>. Welcome to our server! Be sure to read through the <DiscordMention type="channel">rules</DiscordMention>. You can ping <DiscordMention type="role" color="#70f0b4">Support</DiscordMention> if you need help.
 						</DiscordMessage>
 						<DiscordMessage>
-							Hey there <DiscordMention highlight={true}>Sanctuary</DiscordMention>, thanks! I will!
+							Hey there <DiscordMention profile="sanc" highlight={true} />, thanks! I will!
 						</DiscordMessage>
 					</DiscordMessages>
 					<h3 className="title">Full embed example</h3>
