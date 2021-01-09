@@ -16,7 +16,7 @@ export default class DiscordMessage extends Component {
 		avatar: PropTypes.string,
 		bot: PropTypes.bool,
 		children: PropTypes.node,
-		compactMode: PropTypes.boolean,
+		compactMode: PropTypes.bool,
 		edited: PropTypes.bool,
 		profile: PropTypes.string,
 		roleColor: PropTypes.string,
