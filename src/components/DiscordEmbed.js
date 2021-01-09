@@ -47,7 +47,7 @@ export default class DiscordEmbed extends Component {
 			author: (
 				<div className="discord-embed-author">
 					{props.authorImage ? <img src={props.authorImage} alt="" className="discord-author-image" /> : null}
-					{props.authorUrl ? <a href={props.authorUrl} target="_blank">{props.authorName}</a> : <span>{props.authorName}</span>}
+					{props.authorUrl ? <a href={props.authorUrl} target="_blank" rel="noopener noreferrer">{props.authorName}</a> : <span>{props.authorName}</span>}
 				</div>
 			),
 			footer: (
@@ -68,7 +68,7 @@ export default class DiscordEmbed extends Component {
 			),
 			title: (
 				<div className="discord-embed-title">
-					{props.url ? <a href={props.url} target="_blank">{props.title}</a> : <span>{props.title}</span>}
+					{props.url ? <a href={props.url} target="_blank" rel="noopener noreferrer">{props.title}</a> : <span>{props.title}</span>}
 				</div>
 			),
 		}
