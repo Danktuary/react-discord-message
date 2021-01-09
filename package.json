@@ -16,6 +16,7 @@
   "repository": "https://github.com/Danktuary/react-discord-message.git",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
+  "unpkg": "dist/VueDiscordMessage.umd.min.js",
   "jsnext:main": "dist/index.es.js",
   "engines": {
     "node": ">=8",
@@ -25,7 +26,7 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "lint": "eslint src --ext js",
-    "prepare": "yarn run build",
+    "prepare": "NODE_ENV=production yarn run build",
     "predeploy": "cd demo && yarn install && yarn run build"
   },
   "peerDependencies": {
