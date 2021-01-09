@@ -1,4 +1,15 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './DiscordEmbedFields.css'
 
-export default ({ children }) => <div className="discord-embed-fields">{children}</div>
+function DiscordEmbedFields({ children }) {
+	return (
+		<div className="discord-embed-fields">{children}</div>
+	)
+}
+
+DiscordEmbedFields.propTypes = {
+	children: PropTypes.node,
+}
+
+export default DiscordEmbedFields

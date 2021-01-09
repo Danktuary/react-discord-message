@@ -1,9 +1,10 @@
 import React, { Children, cloneElement, useContext } from 'react'
+import PropTypes from 'prop-types'
 import DiscordOptionsContext from '../context/DiscordOptionsContext.js'
 import * as DiscordDefaultOptions from '../context/DiscordDefaultOptions.js'
 import './DiscordMessages.css'
 
-export default function DiscordMessages({ children, compactMode = false, lightTheme = false }) {
+function DiscordMessages({ children, compactMode, lightTheme }) {
 	const options = useContext(DiscordOptionsContext) || DiscordDefaultOptions
 
 	lightTheme = lightTheme === true || (options.defaultTheme === 'light' && lightTheme !== false)
@@ -23,3 +24,11 @@ export default function DiscordMessages({ children, compactMode = false, lightTh
 		</div>
 	)
 }
+
+DiscordMessages.propTypes = {
+	children: PropTypes.node,
+	compactMode: PropTypes.bool,
+	lightTheme: PropTypes.bool,
+}
+
+export default DiscordMessages

@@ -4,6 +4,7 @@ import './DiscordEmbedField.css'
 
 export default class DiscordEmbedField extends Component {
 	static propTypes = {
+		children: PropTypes.node,
 		fieldTitle: PropTypes.string.isRequired,
 		inline: PropTypes.bool,
 	};

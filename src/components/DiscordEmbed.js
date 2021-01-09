@@ -8,6 +8,7 @@ export default class DiscordEmbed extends Component {
 		authorImage: PropTypes.string,
 		authorName: PropTypes.string,
 		authorUrl: PropTypes.string,
+		children: PropTypes.node,
 		color: PropTypes.string,
 		footerImage: PropTypes.string,
 		image: PropTypes.string,

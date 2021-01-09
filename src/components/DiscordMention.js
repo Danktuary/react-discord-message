@@ -9,6 +9,7 @@ export default class DiscordMention extends Component {
 	static contextType = DiscordOptionsContext
 
 	static propTypes = {
+		children: PropTypes.node,
 		color: PropTypes.string,
 		highlight: PropTypes.bool,
 		profile: PropTypes.string,
