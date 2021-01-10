@@ -1,6 +1,6 @@
 {
   "name": "react-discord-message",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "React components to easily build and display fake Discord messages on your webpages.",
   "keywords": [
     "react",
@@ -11,13 +11,17 @@
     "component",
     "embed"
   ],
-  "author": "Danktuary",
-  "license": "MIT",
+  "homepage": "https://react-discord-message.netlify.app/",
   "repository": "https://github.com/Danktuary/react-discord-message.git",
+  "author": "Sanctuary <sanc.pw@gmail.com>",
+  "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "unpkg": "dist/VueDiscordMessage.umd.min.js",
   "jsnext:main": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">=8",
     "npm": ">=5"
@@ -67,9 +71,6 @@
     "rollup-plugin-terser": "^7.0.2",
     "webpack-dev-server": "^3.1.11"
   },
-  "files": [
-    "dist"
-  ],
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "hex-to-rgba": "^1.0.2"
