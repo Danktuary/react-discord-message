@@ -38,11 +38,13 @@ const config = [
 				sourcemap: true,
 			},
 		],
-		plugins: [del({ targets: ['dist/*'] })].concat(...plugins),
+		plugins,
 	},
 ]
 
 if (process.env.NODE_ENV === 'production') {
+	config[0].plugins = [del({ targets: ['dist/*'] })].concat(...plugins)
+
 	config.push({
 		input: 'src/index.js',
 		output: [
