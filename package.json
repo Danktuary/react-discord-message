@@ -1,6 +1,6 @@
 {
   "name": "@danktuary/react-discord-message",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "React components to easily build and display fake Discord messages on your webpages.",
   "keywords": [
     "react",
