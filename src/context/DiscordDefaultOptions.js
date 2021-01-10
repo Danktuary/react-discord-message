@@ -10,8 +10,8 @@ defaultAvatars.default = defaultAvatars.blue
 
 export default {
 	avatars: defaultAvatars,
-	disableFont: true,
 	defaultMode: 'comfy',
 	defaultTheme: 'dark',
+	disableFont: true,
 	profiles: {},
 }
