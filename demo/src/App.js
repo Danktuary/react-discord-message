@@ -39,22 +39,22 @@ export default function App() {
 					<h3 className="title">A normal conversation</h3>
 					<DiscordMessages>
 						<DiscordMessage>
-							Hey guys, I'm new here! Glad to be able to join you all!
+							Hey guys, I&apos;m new here! Glad to be able to join you all!
 						</DiscordMessage>
 						<DiscordMessage author="Dawn" avatar="red">
-							Hi, I'm new here too!
+							Hi, I&apos;m new here too!
 						</DiscordMessage>
 						<DiscordMessage profile="sanc">
 							Hey, <DiscordMention /> and <DiscordMention>Dawn</DiscordMention>. Welcome to our server!<br />Be sure to read through the <DiscordMention type="channel">rules</DiscordMention>. You can ping <DiscordMention type="role" color="#70f0b4">Support</DiscordMention> if you need help.
 						</DiscordMessage>
 						<DiscordMessage profile="twelve">
-							Hello everyone! How's it going?
+							Hello everyone! How&apos;s it going?
 						</DiscordMessage>
 						<DiscordMessage author="User">
 							Thank you <DiscordMention profile="sanc" highlight={true} />!
 						</DiscordMessage>
 						<DiscordMessage author="Yotsuba" avatar="https://i.imgur.com/amw0MGJ.png">
-							I'm doing well, <DiscordMention profile="twelve" />. What about yourself?
+							I&apos;m doing well, <DiscordMention profile="twelve" />. What about yourself?
 						</DiscordMessage>
 						<DiscordMessage profile="twelve">
 							!8ball How am I doing today?
@@ -65,12 +65,12 @@ export default function App() {
 					</DiscordMessages>
 					<h3 className="title">Light mode</h3>
 					<DiscordMessages lightTheme={true}>
-						<DiscordMessage>Look at me I'm a beautiful butterfly</DiscordMessage>
+						<DiscordMessage>Look at me I&apos;m a beautiful butterfly</DiscordMessage>
 						<DiscordMessage edited={true}>Fluttering in the sunlight <span role="img" aria-label="Sun">🌞</span></DiscordMessage>
 					</DiscordMessages>
 					<h3 className="title">Compact mode</h3>
 					<DiscordMessages compactMode={true}>
-						<DiscordMessage>Look at me I'm a beautiful butterfly</DiscordMessage>
+						<DiscordMessage>Look at me I&apos;m a beautiful butterfly</DiscordMessage>
 						<DiscordMessage>Fluttering in the moonlight <span role="img" aria-label="Moon">🌝</span></DiscordMessage>
 						<DiscordMessage>Waiting for the day when</DiscordMessage>
 						<DiscordMessage>Compact mode would be turned on</DiscordMessage>
