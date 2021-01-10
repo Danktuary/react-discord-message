@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './AuthorInfo.css'
 
-function AuthorInfo({ bot, children, roleColor }) {
+function AuthorInfo({ author, bot, roleColor }) {
 	return (
 		<span className="discord-author-info">
 			<span style={{ color: roleColor }} className="discord-author-username">
-				{children}
+				{author}
 			</span>
 			{bot ? <span className="discord-bot-tag">Bot</span> : null}
 		</span>
@@ -14,8 +14,8 @@ function AuthorInfo({ bot, children, roleColor }) {
 }
 
 AuthorInfo.propTypes = {
+	author: PropTypes.string,
 	bot: PropTypes.bool,
-	children: PropTypes.node,
 	roleColor: PropTypes.string,
 }
 

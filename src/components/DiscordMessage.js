@@ -26,9 +26,7 @@ function DiscordMessage(props) {
 	const authorInfo = {
 		comfy: (
 			<div>
-				<AuthorInfo bot={profile.bot} roleColor={profile.roleColor}>
-					{profile.author}
-				</AuthorInfo>
+				<AuthorInfo author={profile.author} bot={profile.bot} roleColor={profile.roleColor} />
 				<span className="discord-message-timestamp">
 					{parseTimestamp(props.timestamp)}
 				</span>
@@ -39,9 +37,7 @@ function DiscordMessage(props) {
 				<span className="discord-message-timestamp">
 					{parseTimestamp(props.timestamp)}
 				</span>
-				<AuthorInfo bot={profile.bot} roleColor={profile.roleColor}>
-					{profile.author}
-				</AuthorInfo>
+				<AuthorInfo author={profile.author} bot={profile.bot} roleColor={profile.roleColor} />
 			</Fragment>
 		),
 	}
