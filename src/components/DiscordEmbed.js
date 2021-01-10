@@ -74,7 +74,7 @@ function DiscordEmbed({
 							{slots.default}
 						</div>
 						{slots.fields}
-						{image ? <img src={image} className="discord-embed-image" alt="" /> : null}
+						{image ? <img src={image} alt="" className="discord-embed-image" /> : null}
 					</div>
 					{thumbnail ? <img src={thumbnail} alt="" className="discord-embed-thumbnail" /> : null}
 				</div>
