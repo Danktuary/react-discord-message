@@ -15,7 +15,7 @@ yarn add @danktuary/react-discord-message
 
 ```jsx
 import React from 'react';
-import { DiscordMention, DiscordMessage, DiscordMessages } from 'react-discord-message';
+import { DiscordMention, DiscordMessage, DiscordMessages } from '@danktuary/react-discord-message';
 
 export default function App() {
 	return (
@@ -74,7 +74,7 @@ Import it and then use the components in your JSX.
 
 ```jsx
 import React from 'react'
-import { DiscordMessage, DiscordMessages } from 'react-discord-message'
+import { DiscordMessage, DiscordMessages } from '@danktuary/react-discord-message'
 
 export default function App() {
 	return (
@@ -149,7 +149,7 @@ import {
 	DiscordMessage,
 	DiscordMessages,
 	DiscordOptionsContext,
-} from 'react-discord-message'
+} from '@danktuary/react-discord-message'
 
 // Extend the default options in order to provide your own
 const discordOptions = {
