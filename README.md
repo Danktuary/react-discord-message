@@ -92,7 +92,7 @@ export default function App() {
 
 ### Browser build
 
-If you're want to use the browser build, you can pull it in via unpkg, along with the other necessary files.
+If you want to use the browser build, you can pull it in via unpkg, along with the other necessary files.
 
 ```html
 <body>
@@ -119,7 +119,7 @@ If you're want to use the browser build, you can pull it in via unpkg, along wit
 </body>
 ```
 
-Do note that that using a package manager is recommended.
+Do note that using a package manager is recommended.
 
 ## Usage
 
@@ -141,7 +141,7 @@ The syntax is kept fairly simple. Here's a basic example of a regular conversati
 
 ### Context options
 
-After installation, you can use the `<DiscordOptionsContext>` context component to configure the plugin to your liking through the following settings.
+After installation, you can use the `<DiscordOptionsContext>` component to configure the plugin to your liking through the following settings.
 
 ```jsx
 import React from 'react'
@@ -212,7 +212,7 @@ const discordOptions = {
 
 #### Profile shortcuts
 
-Sometimes you'll want to use the same message data across multiple messages. You can do so by providing an object of profiles in.
+Sometimes you'll want to use the same message data across multiple messages. You can do so by providing an object of profiles.
 
 ```js
 const discordOptions = {
@@ -253,7 +253,7 @@ export default function App() {
 
 ### Components notes
 
-Below are notes for a few certain components. If you want to see what props each component has, check the `propTypes` property within in the respective components inside the [`/src/components/`](https://github.com/Danktuary/wc-discord-message/blob/master/src/components/) folder.
+Below are notes for a few certain components. If you want to see what props each component has, check the `propTypes` property within in the respective components inside the [`/src/components/`](https://github.com/Danktuary/react-discord-message/blob/master/src/components/) folder.
 
 #### DiscordMessages component
 
