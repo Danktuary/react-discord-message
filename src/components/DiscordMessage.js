@@ -8,51 +8,57 @@ import './DiscordMessage.css'
 
 const now = new Date()
 
-function DiscordMessage(props) {
+function DiscordMessage({
+	author,
+	avatar,
+	bot,
+	children,
+	compactMode,
+	edited,
+	profile: profileKey,
+	roleColor,
+	timestamp,
+}) {
 	const options = useContext(DiscordOptionsContext) || DiscordDefaultOptions
 
-	const resolveAvatar = avatar => options.avatars[avatar] || avatar || options.avatars.default
-	const defaults = {
-		author: props.author,
-		bot: props.bot,
-		roleColor: props.roleColor,
-	}
+	const profileDefaults = { author, bot, roleColor }
+	const resolveAvatar = userAvatar => options.avatars[userAvatar] || userAvatar || options.avatars.default
 
-	const userProfile = options.profiles[props.profile] || {}
-	userProfile.avatar = resolveAvatar(userProfile.avatar || props.avatar)
+	const userProfile = options.profiles[profileKey] || {}
+	userProfile.avatar = resolveAvatar(userProfile.avatar || avatar)
 
-	const profile = { ...defaults, ...userProfile }
+	const profile = { ...profileDefaults, ...userProfile }
 
 	const authorInfo = {
 		comfy: (
 			<div>
 				<AuthorInfo author={profile.author} bot={profile.bot} roleColor={profile.roleColor} />
 				<span className="discord-message-timestamp">
-					{parseTimestamp(props.timestamp)}
+					{parseTimestamp(timestamp)}
 				</span>
 			</div>
 		),
 		compact: (
 			<Fragment>
 				<span className="discord-message-timestamp">
-					{parseTimestamp(props.timestamp)}
+					{parseTimestamp(timestamp)}
 				</span>
 				<AuthorInfo author={profile.author} bot={profile.bot} roleColor={profile.roleColor} />
 			</Fragment>
 		),
 	}
 
-	const checkHighlight = children => {
-		if (!Array.isArray(children)) return false
-		return children.some(({ props: childProps = {} }) => childProps.highlight && childProps.type !== 'channel')
+	const checkHighlight = elements => {
+		if (!Array.isArray(elements)) return false
+		return elements.some(({ props: childProps = {} }) => childProps.highlight && childProps.type !== 'channel')
 	}
 
 	let messageClasses = 'discord-message'
-	if (props.children && checkHighlight(props.children)) messageClasses += ' discord-highlight-mention'
+	if (children && checkHighlight(children)) messageClasses += ' discord-highlight-mention'
 
 	const slots = {
-		'default': props.children,
-		embeds: findSlot(props.children, 'embeds'),
+		'default': children,
+		embeds: findSlot(children, 'embeds'),
 	}
 
 	if (slots.embeds) {
@@ -69,11 +75,11 @@ function DiscordMessage(props) {
 				<img src={profile.avatar} alt={profile.author} />
 			</div>
 			<div className="discord-message-content">
-				{!props.compactMode ? authorInfo.comfy : null}
+				{!compactMode ? authorInfo.comfy : null}
 				<div className="discord-message-body">
-					{props.compactMode ? authorInfo.compact : null}
+					{compactMode ? authorInfo.compact : null}
 					{slots.default}
-					{props.edited
+					{edited
 						? <span className="discord-message-edited">(edited)</span>
 						: null
 					}
