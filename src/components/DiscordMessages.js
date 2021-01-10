@@ -1,7 +1,7 @@
 import React, { Children, cloneElement, useContext } from 'react'
 import PropTypes from 'prop-types'
 import DiscordOptionsContext from '../context/DiscordOptionsContext.js'
-import * as DiscordDefaultOptions from '../context/DiscordDefaultOptions.js'
+import DiscordDefaultOptions from '../context/DiscordDefaultOptions.js'
 import './DiscordMessages.css'
 
 function DiscordMessages({ children, compactMode, lightTheme }) {

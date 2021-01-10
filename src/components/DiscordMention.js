@@ -1,84 +1,70 @@
-import React, { Component, createRef } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import hexToRgba from 'hex-to-rgba'
 import DiscordOptionsContext from '../context/DiscordOptionsContext.js'
-import * as DiscordDefaultOptions from '../context/DiscordDefaultOptions.js'
+import DiscordDefaultOptions from '../context/DiscordDefaultOptions.js'
 import './DiscordMention.css'
 
-export default class DiscordMention extends Component {
-	static contextType = DiscordOptionsContext
+function DiscordMention({ children, color, profile, type }) {
+	const options = useContext(DiscordOptionsContext) || DiscordDefaultOptions
+	const $el = useRef(null)
+	const [user] = useState(options.profiles[profile] || {})
+	const [roleColor] = useState(user.roleColor || color)
 
-	static propTypes = {
-		children: PropTypes.node,
-		color: PropTypes.string,
-		highlight: PropTypes.bool,
-		profile: PropTypes.string,
-		type(props) {
-			if (!['user', 'channel', 'role'].includes(props.type)) {
-				return new RangeError('Type prop inside DiscordMention component must be either "user", "channel", or "role".')
+	const setHoverColor = () => $el.current.style.backgroundColor = hexToRgba(roleColor, 0.3)
+	const resetHoverColor = () => $el.current.style.backgroundColor = hexToRgba(roleColor, 0.1)
+
+	const colorStyle = !roleColor || type !== 'role'
+		? {}
+		: {
+			color: roleColor,
+			backgroundColor: hexToRgba(roleColor, 0.1),
+		}
+
+	useEffect(() => {
+		if (roleColor && type === 'role') {
+			$el.current.addEventListener('mouseover', setHoverColor)
+			$el.current.addEventListener('mouseout', resetHoverColor)
+		}
+
+		return () => {
+			if (roleColor && type === 'role') {
+				$el.current.removeEventListener('mouseover', setHoverColor)
+				$el.current.removeEventListener('mouseout', resetHoverColor)
 			}
-		},
-	};
-
-	static defaultProps = {
-		type: 'user',
-	};
-
-	constructor(props) {
-		super(props)
-		this.$el = createRef()
-		this.user = {}
-		this.roleColor = props.color
-	}
-
-	componentDidMount() {
-		if (this.roleColor && this.props.type === 'role') {
-			this.$el.current.addEventListener('mouseover', this.setHoverColor.bind(this))
-			this.$el.current.addEventListener('mouseout', this.resetHoverColor.bind(this))
 		}
+	})
+
+	const slots = { 'default': children }
+	const mentionCharacter = type === 'channel' ? '#' : '@'
+
+	if (!slots.default) {
+		slots.default = type === 'user' && user.author
+			? user.author
+			: type === 'channel' ? type : type.charAt(0).toUpperCase() + type.slice(1)
 	}
 
-	componentWillUnmount() {
-		if (this.roleColor && this.props.type === 'role') {
-			this.$el.current.removeEventListener('mouseover', this.setHoverColor.bind(this))
-			this.$el.current.removeEventListener('mouseout', this.resetHoverColor.bind(this))
-		}
-	}
-
-	setHoverColor() {
-		this.$el.current.style.backgroundColor = hexToRgba(this.roleColor, 0.3)
-	}
-
-	resetHoverColor() {
-		this.$el.current.style.backgroundColor = hexToRgba(this.roleColor, 0.1)
-	}
-
-	render() {
-		const { children, color, profile, type } = this.props
-
-		this.user = (this.context || DiscordDefaultOptions).profiles[profile] || {}
-		this.roleColor = this.user.roleColor || color
-
-		const colorStyle = !this.roleColor || type !== 'role'
-			? {}
-			: {
-				color: this.roleColor,
-				backgroundColor: hexToRgba(this.roleColor, 0.1),
-			}
-
-		const slots = { 'default': children }
-		const mentionCharacter = type === 'channel' ? '#' : '@'
-
-		if (!slots.default) {
-			slots.default = type === 'user' && this.user.author
-				? this.user.author
-				: type === 'channel' ? type : type.charAt(0).toUpperCase() + type.slice(1)
-		}
-
-		return (
-			<span style={colorStyle} className="discord-mention" ref={this.$el}>
-				{mentionCharacter}{slots.default}
-			</span>
-		)
-	}
+	return (
+		<span style={colorStyle} className="discord-mention" ref={$el}>
+			{mentionCharacter}{slots.default}
+		</span>
+	)
 }
+
+DiscordMention.propTypes = {
+	children: PropTypes.node,
+	color: PropTypes.string,
+	highlight: PropTypes.bool,
+	profile: PropTypes.string,
+	type(props) {
+		if (!['user', 'channel', 'role'].includes(props.type)) {
+			return new RangeError('Type prop inside DiscordMention component must be either "user", "channel", or "role".')
+		}
+	},
+}
+
+DiscordMention.defaultProps = {
+	type: 'user',
+}
+
+export default DiscordMention
