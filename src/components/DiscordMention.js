@@ -22,13 +22,13 @@ function DiscordMention({ children, color, profile, type }) {
 		}
 
 	useEffect(() => {
-		if (roleColor && type === 'role') {
+		if ($el.current && roleColor && type === 'role') {
 			$el.current.addEventListener('mouseover', setHoverColor)
 			$el.current.addEventListener('mouseout', resetHoverColor)
 		}
 
 		return () => {
-			if (roleColor && type === 'role') {
+			if ($el.current && roleColor && type === 'role') {
 				$el.current.removeEventListener('mouseover', setHoverColor)
 				$el.current.removeEventListener('mouseout', resetHoverColor)
 			}
