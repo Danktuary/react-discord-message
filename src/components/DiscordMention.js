@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import hexToRgba from 'hex-to-rgba'
 import DiscordDefaultOptions from '../context/DiscordDefaultOptions.js'
@@ -7,10 +7,10 @@ import './DiscordMention.css'
 
 function DiscordMention({ children, color, profile, type }) {
 	const options = useContext(DiscordOptionsContext) || DiscordDefaultOptions
-	const $el = useRef(null)
-	const [user] = useState(options.profiles[profile] || {})
-	const [roleColor] = useState(user.roleColor || color)
+	const user = options.profiles[profile] || {}
+	const roleColor = user.roleColor || color
 
+	const $el = useRef(null)
 	const setHoverColor = () => $el.current.style.backgroundColor = hexToRgba(roleColor, 0.3)
 	const resetHoverColor = () => $el.current.style.backgroundColor = hexToRgba(roleColor, 0.1)
 
