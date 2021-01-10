@@ -1,8 +1,8 @@
 import React, { Fragment, isValidElement, useContext } from 'react'
 import PropTypes from 'prop-types'
 import AuthorInfo from './AuthorInfo.js'
-import DiscordOptionsContext from '../context/DiscordOptionsContext.js'
 import DiscordDefaultOptions from '../context/DiscordDefaultOptions.js'
+import DiscordOptionsContext from '../context/DiscordOptionsContext.js'
 import { elementsWithoutSlot, findSlot, parseTimestamp } from '../util.js'
 import './DiscordMessage.css'
 

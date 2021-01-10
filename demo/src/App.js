@@ -1,13 +1,13 @@
 import React from 'react'
 import {
-	DiscordMessages,
-	DiscordMessage,
-	DiscordEmbed,
-	DiscordEmbedFields,
-	DiscordEmbedField,
-	DiscordMention,
-	DiscordOptionsContext,
 	DiscordDefaultOptions,
+	DiscordEmbed,
+	DiscordEmbedField,
+	DiscordEmbedFields,
+	DiscordMention,
+	DiscordMessage,
+	DiscordMessages,
+	DiscordOptionsContext,
 } from 'react-discord-message'
 
 const discordOptions = {

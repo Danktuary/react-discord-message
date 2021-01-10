@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './DiscordEmbedField.css'
 
-function DiscordEmbedField({ children, inline, fieldTitle }) {
+function DiscordEmbedField({ children, fieldTitle, inline }) {
 	let classes = 'discord-embed-field'
 	if (inline) classes += ' discord-inline-field'
 

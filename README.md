@@ -15,7 +15,7 @@ yarn add @danktuary/react-discord-message
 
 ```jsx
 import React from 'react';
-import { DiscordMessages, DiscordMessage, DiscordMention } from 'react-discord-message';
+import { DiscordMention, DiscordMessage, DiscordMessages } from 'react-discord-message';
 
 export default function App() {
 	return (
@@ -74,7 +74,7 @@ Import it and then use the components in your JSX.
 
 ```jsx
 import React from 'react'
-import { DiscordMessages, DiscordMessage } from 'react-discord-message'
+import { DiscordMessage, DiscordMessages } from 'react-discord-message'
 
 export default function App() {
 	return (
@@ -103,7 +103,7 @@ If you're want to use the browser build, you can pull it in via unpkg, along wit
 	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 	<script src="https://unpkg.com/@danktuary/react-discord-message@^1.0.0/dist/index.min.js"></script>
 	<script type="text/babel">
-		const { DiscordMessages, DiscordMessage } = ReactDiscordMessage
+		const { DiscordMessage, DiscordMessages } = ReactDiscordMessage
 
 		ReactDOM.render((
 			<DiscordMessages>
@@ -146,10 +146,10 @@ After installation, you can use the `<DiscordOptionsContext>` context component 
 ```jsx
 import React from 'react'
 import {
-	DiscordMessages,
-	DiscordMessage,
-	DiscordOptionsContext,
 	DiscordDefaultOptions
+	DiscordMessage,
+	DiscordMessages,
+	DiscordOptionsContext,
 } from 'react-discord-message'
 
 // Extend the default options in order to provide your own

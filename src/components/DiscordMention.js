@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import hexToRgba from 'hex-to-rgba'
-import DiscordOptionsContext from '../context/DiscordOptionsContext.js'
 import DiscordDefaultOptions from '../context/DiscordDefaultOptions.js'
+import DiscordOptionsContext from '../context/DiscordOptionsContext.js'
 import './DiscordMention.css'
 
 function DiscordMention({ children, color, profile, type }) {
