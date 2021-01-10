@@ -99,7 +99,6 @@ If you want to use the browser build, you can pull it in via unpkg, along with t
 	<div id="root"></div>
 	<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
 	<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-	<script src="https://unpkg.com/prop-types@15.7.2/prop-types.min.js"></script>
 	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 	<script src="https://unpkg.com/@danktuary/react-discord-message@^1.0.0/dist/index.min.js"></script>
 	<script type="text/babel">

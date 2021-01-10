@@ -56,7 +56,6 @@ if (process.env.NODE_ENV === 'production') {
 				globals: {
 					react: 'React',
 					'react-dom': 'ReactDOM',
-					'prop-types': 'PropTypes',
 				},
 			},
 		],

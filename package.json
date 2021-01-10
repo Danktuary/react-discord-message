@@ -34,7 +34,6 @@
     "predeploy": "cd demo && yarn install && yarn run build"
   },
   "peerDependencies": {
-    "prop-types": "^15.5.4",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
@@ -73,6 +72,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "hex-to-rgba": "^1.0.2"
+    "hex-to-rgba": "^1.0.2",
+    "prop-types": "^15.5.4"
   }
 }
