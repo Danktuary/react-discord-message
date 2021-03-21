@@ -33,7 +33,7 @@ function DiscordMention({ children, color, profile, type }) {
 				$el.current.removeEventListener('mouseout', resetHoverColor)
 			}
 		}
-	})
+	}, [])
 
 	const slots = { 'default': children }
 	const mentionCharacter = type === 'channel' ? '#' : '@'
