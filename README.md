@@ -7,7 +7,7 @@ If you want to use web components instead, use [wc-discord-message](https://gith
 
 ```sh
 yarn add @danktuary/react-discord-message
-# or npm install @danktuary/react-discord-messgae
+# or npm install @danktuary/react-discord-message
 # browser build also available: https://unpkg.com/@danktuary/react-discord-message
 ```
 
